@@ -1,0 +1,13 @@
+<li id="project-<%= project.id %>">
+  <span class="user"><%= link_to project.name, project %></span>
+  <span class="content"><%= project.description %></span>
+  <span class="timestamp">
+    Created <%= time_tag(project.created_at) %>.
+    <%if current_user.admin? %>
+      <%= link_to "delete", project, method: :delete,
+                  data: { confirm: "Are You sure?" } %>
+    <% end %>
+
+
+  </span>
+</li>

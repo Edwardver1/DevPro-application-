@@ -1,0 +1,9 @@
+<%= form_for(@assign) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.select :project_id, Project.all.collect { |p| [ p.name, p.id ] } %>
+
+    <%= f.select :developer_id, Developer.all.collect { |p| [ p.name, p.id ] } %>
+
+    <%= f.submit "Assign Developer", class: "btn btn-primary" %>
+<% end %>

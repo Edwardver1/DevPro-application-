@@ -1,0 +1,12 @@
+<li id="developer-<%= developer.id %>">
+  <span class="user"><%= link_to developer.name, developer %></span>
+  <span class="content"><%= developer.name %></span>
+  <span class="content"><%= developer.surname %></span>
+  <span class="timestamp">
+    Posted <%= time_tag(developer.created_at) %> ago.
+
+      <%= link_to "delete", developer, method: :delete,
+                  data: { confirm: "Are You sure?" } %>
+
+  </span>
+</li>

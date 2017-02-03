@@ -1,0 +1,38 @@
+<% provide(:title, "Home") %>
+<% if logged_in? %>
+    <div class="row">
+      <aside class="col-md-4">
+        <section class="user_info">
+          <%= link_to gravatar_for(current_user, size: 50), current_user %>
+          <h1><%= current_user.name %></h1>
+        </section>
+        <section class="micropost_form">
+          <%= link_to "Create Developer", new_developer_path, class: "btn btn-lg " %>
+          <%= link_to "Create Project", new_project_path, class: "btn btn-lg " %>
+          <%= link_to "Assign Developer", new_assign_path, class: "btn btn-lg " %>
+        </section>
+      </aside>
+      <div class="col-md-8">
+        <section class="lists">
+          <% if @projects.any? %>
+              <h3>Projects (<%= @projects.count %>)</h3>
+              <ol class="microposts">
+                <%= render @projects %>
+              </ol>
+              <%= will_paginate @projects %>
+          <% end %>
+        </section>
+      </div>
+    </div>
+<% else %>
+    <div class="center jumbotron">
+      <h1>Welcome to the DevPro</h1>
+
+      <h2>
+        This is the home page for the DevPro application.
+      </h2>
+
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    </div>
+
+<% end %>

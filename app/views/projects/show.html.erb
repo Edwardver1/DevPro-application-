@@ -1,0 +1,26 @@
+<% provide(:title, @project.name + " Project ") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @project.name %>
+      </h1>
+    </section>
+    <p>   <%= @project.description %></p>
+    <%= link_to "Assign developer", new_assign_path, class: "btn btn-l " %>
+  </aside>
+  <div class="col-md-8">
+    <div class="col-md-8">
+      <ol class="lists">
+        <h3>Developers Assigned</h3>
+        <% @developer_assigned.developers.each do |developer| %>
+            <li> <span class="user"><%= link_to developer.name, developer %></span>
+              <span class="content"><%= developer.name + " " + developer.surname %>
+              <%= link_to "Delete", {:controller => "assigns", :action => "delete_developerAssign", :developer => developer.id, :project => @project.id} %>
+            </span>
+            </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>

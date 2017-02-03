@@ -1,0 +1,11 @@
+<%= form_for(@developer) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :surname %>
+    <%= f.text_field :surname, class: 'form-control' %>
+
+    <%= f.submit "Create Developer", class: "btn btn-primary" %>
+<% end %>
